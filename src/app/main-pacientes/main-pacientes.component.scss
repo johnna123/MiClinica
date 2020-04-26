@@ -1,0 +1,17 @@
+.container{
+    display: flex;
+    height: 90%;
+}
+
+.big-item{
+    display: flex;
+    flex-grow: 4;
+    flex-basis: auto;
+}
+
+.small-item{
+    display: flex;
+    flex-grow: 1;
+    flex-basis:auto;
+    flex-direction: column;
+}
