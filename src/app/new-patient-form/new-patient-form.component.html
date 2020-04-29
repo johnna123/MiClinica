@@ -1,0 +1,72 @@
+<form novalidate [formGroup]="newPatForm" #fform="ngForm" (ngSubmit)="onSubmit()">
+
+    <mat-dialog-content>
+        <div class="form-container center-content">
+
+
+
+            <div class="row-element">
+                <mat-form-field>
+                    <input matInput formControlName="name" placeholder="Nombre:" type="text" required>
+                    <mat-error *ngIf="formErrors.name">{{formErrors.name}}</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="row-element">
+                <mat-form-field>
+                    <mat-label>Fecha de Nacimiento</mat-label>
+                    <input matInput [matDatepicker]="picker" required matInput formControlName="birth">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
+            </div>
+
+            <div class="row-element">
+                <mat-form-field>
+                    <input matInput formControlName="phone" placeholder="Telefono:" type="text">
+                    <mat-error *ngIf="formErrors.phone">{{formErrors.phone}}</mat-error>
+                </mat-form-field>
+            </div>
+
+
+        </div>
+
+        <div class="form-container">
+            <div class="small-item">
+                <mat-slide-toggle class="gen-button" formControlName="diabetes">Diabetes</mat-slide-toggle>
+                <mat-slide-toggle class="gen-button" formControlName="hipertension">Hipertension</mat-slide-toggle>
+                <mat-slide-toggle class="gen-button" formControlName="lupus">Lupus</mat-slide-toggle>
+                <mat-slide-toggle class="gen-button" formControlName="transtornos_tiroides">Transtornos de Tiroides
+                </mat-slide-toggle>
+                <mat-slide-toggle class="gen-button" formControlName="hemorragias_freq">Hemorragias Frecuentes
+                </mat-slide-toggle>
+                <mat-slide-toggle class="gen-button" formControlName="tomando_medicamentos">Medicamentos
+                </mat-slide-toggle>
+                <mat-slide-toggle class="gen-button" formControlName="embarazo">Embarazo</mat-slide-toggle>
+                <mat-slide-toggle class="gen-button" formControlName="tratamiento_psiquiatrico">Tratamiento Psiquiatrico
+                </mat-slide-toggle>
+            </div>
+
+            <div class="big-item">
+                <mat-card><textarea matInput formControlName="enf_otras" placeholder="Otras Enfermedades:"
+                        rows=5></textarea></mat-card>
+                <mat-card><textarea matInput formControlName="alergia" placeholder="Alergias:" rows=5></textarea>
+                </mat-card>
+                <mat-card><textarea matInput formControlName="drogas" placeholder="Drogas o Enervantes:"
+                        rows=5></textarea></mat-card>
+            </div>
+        </div>
+
+    </mat-dialog-content>
+
+    <mat-dialog-actions>
+
+        <span class="flex-spacer"></span>
+
+        <button mat-button mat-dialog-close>Cancelar</button>
+
+        <button type="submit" mat-button [disabled]="newPatForm.invalid">Guardar Paciente</button>
+
+    </mat-dialog-actions>
+
+</form>
