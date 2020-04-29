@@ -26,6 +26,8 @@ import { HeaderComponent } from './header/header.component';
 import { AutocompleteFilterExample } from './autocomplete-filter-example/test.component';
 import { NewPatientFormComponent } from './new-patient-form/new-patient-form.component';
 
+import {FileSystemService} from './services/file-system.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,7 +58,10 @@ import { NewPatientFormComponent } from './new-patient-form/new-patient-form.com
   entryComponents: [
     NewPatientFormComponent,
   ],
-  providers: [MatDatepickerModule,],
+  providers: [
+    MatDatepickerModule,
+    FileSystemService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
