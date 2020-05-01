@@ -12,13 +12,14 @@
     </mat-form-field>
   
     <div *ngIf="paciente">
-      {{paciente}}
+      aqui va la info de {{paciente}}
     </div>
   </div>
 
   <div class="small-item">
 
-    <button class="gen-button" mat-raised-button (click)="newPatientForm()">Nuevo Pacienteeee</button>
+    <button class="gen-button" mat-raised-button (click)="newPatientForm()">Nuevo Paciente</button>
+    <button class="gen-button" mat-raised-button [disabled]="!paciente" (click)="delPatientDiag()">Eliminar Paciente</button>
     <button class="gen-button" mat-raised-button [disabled]="!paciente">Agendar Cita</button>
 
   </div>

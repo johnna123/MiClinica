@@ -27,6 +27,7 @@ import { AutocompleteFilterExample } from './autocomplete-filter-example/test.co
 import { NewPatientFormComponent } from './new-patient-form/new-patient-form.component';
 
 import { FileSystemService } from './services/file-system.service';
+import { DelConfirmDialogComponent } from './del-confirm-dialog/del-confirm-dialog.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { FileSystemService } from './services/file-system.service';
     MainCitasComponent,
     HeaderComponent,
     AutocompleteFilterExample,
-    NewPatientFormComponent
+    NewPatientFormComponent,
+    DelConfirmDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -57,6 +59,7 @@ import { FileSystemService } from './services/file-system.service';
   ],
   entryComponents: [
     NewPatientFormComponent,
+    DelConfirmDialogComponent,
   ],
   providers: [
     MatDatepickerModule,

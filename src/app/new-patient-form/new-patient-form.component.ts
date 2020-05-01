@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {FileSystemService} from '../services/file-system.service'
+import { FileSystemService } from '../services/file-system.service'
 
 import { Paciente } from '../shared/paciente';
 
@@ -44,10 +44,10 @@ export class NewPatientFormComponent implements OnInit {
   createForm() {
     this.newPatForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(25)]],
-      birth: ["",[Validators.required]],
-      phone: ["",Validators.pattern("[0-9]*")],
+      birth: ["", [Validators.required]],
+      phone: ["", Validators.pattern("[0-9]*")],
       date_logged: [""],
-  
+
       diabetes: [false],
       hipertension: [false],
       lupus: [false],
@@ -56,7 +56,7 @@ export class NewPatientFormComponent implements OnInit {
       tomando_medicamentos: [false],
       embarazo: [false],
       tratamiento_psiquiatrico: [false],
-  
+
       alergia: [""],
       enf_otras: [""],
       drogas: [""],
@@ -93,6 +93,7 @@ export class NewPatientFormComponent implements OnInit {
 
   onSubmit() {
     this.patient = this.newPatForm.value;
+    this.patient.date_logged = Date.now().toString();
     this.fileservice.new_patient(this.patient);
     this.dialogRef.close();
   }

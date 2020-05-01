@@ -5,9 +5,10 @@ import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 
-import {NewPatientFormComponent} from '../new-patient-form/new-patient-form.component';
+import { NewPatientFormComponent } from '../new-patient-form/new-patient-form.component';
+import { DelConfirmDialogComponent } from '../del-confirm-dialog/del-confirm-dialog.component';
 import { Paciente } from '../shared/paciente';
-import {FileSystemService} from '../services/file-system.service';
+import { FileSystemService } from '../services/file-system.service';
 
 @Component({
   selector: 'app-main-pacientes',
@@ -23,19 +24,19 @@ export class MainPacientesComponent implements OnInit {
 
   paciente: string;
   pacientes: Paciente[];
-  len:number;
-  opt2id={};
+  len: number;
+  opt2id = {};
 
   constructor(
-    public dialog:MatDialog,
-    private fileservice:FileSystemService,
+    public dialog: MatDialog,
+    private fileservice: FileSystemService,
 
-  ) { 
-    this.pacientes=this.fileservice.get_patients();
-    this.len=this.fileservice.get_len();
-    var opts=this.fileservice.get_patients_names();
-    this.options=opts[0];
-    this.opt2id=opts[1];
+  ) {
+    this.pacientes = this.fileservice.get_patients();
+    this.len = this.fileservice.get_len();
+    var opts = this.fileservice.get_patients_names();
+    this.options = opts[0];
+    this.opt2id = opts[1];
 
   }
 
@@ -46,7 +47,7 @@ export class MainPacientesComponent implements OnInit {
         startWith(''),
         map(value => this._filter(value)),
       );
-    this.paciente="";
+    this.paciente = "";
   }
 
   private _filter(value: string): string[] {
@@ -55,12 +56,16 @@ export class MainPacientesComponent implements OnInit {
     return this.options.filter(option => option.toLowerCase().includes(filterValue));
   }
 
-  patientSelected(patient: string):void{
-    this.paciente=patient
+  patientSelected(patient: string): void {
+    this.paciente = patient
   }
 
-  newPatientForm():void{
-    this.dialog.open(NewPatientFormComponent,{width: '750px', height: '600px'})
+  newPatientForm(): void {
+    this.dialog.open(NewPatientFormComponent, { width: '750px', height: '600px' })
+  }
+
+  delPatientDiag(): void {
+    this.dialog.open(DelConfirmDialogComponent, { data: { name: this.paciente, id: this.opt2id[this.paciente] } })
   }
 
 }
