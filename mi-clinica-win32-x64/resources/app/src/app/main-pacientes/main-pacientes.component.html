@@ -1,0 +1,26 @@
+<div>{{len}}</div>
+<div *ngIf="pacientes">{{pacientes}}</div>
+<form class="form-container">
+  <div class="big-item">
+    <mat-form-field class="example-full-width">
+      <input type="text" placeholder="Busqueda:" aria-label="Number" matInput [formControl]="myControl"
+        [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete" (optionSelected)='patientSelected($event.option.value)'>
+        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+          {{option}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  
+    <div *ngIf="paciente">
+      {{paciente}}
+    </div>
+  </div>
+
+  <div class="small-item">
+
+    <button class="gen-button" mat-raised-button (click)="newPatientForm()">Nuevo Pacienteeee</button>
+    <button class="gen-button" mat-raised-button [disabled]="!paciente">Agendar Cita</button>
+
+  </div>
+</form>

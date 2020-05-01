@@ -6,6 +6,8 @@ import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 
 import {NewPatientFormComponent} from '../new-patient-form/new-patient-form.component';
+import { Paciente } from '../shared/paciente';
+import {FileSystemService} from '../services/file-system.service';
 
 @Component({
   selector: 'app-main-pacientes',
@@ -16,14 +18,26 @@ export class MainPacientesComponent implements OnInit {
 
 
   myControl = new FormControl();
-  options: string[] = ['One', 'Two', 'Three'];
+  options: string[];
   filteredOptions: Observable<string[]>;
 
   paciente: string;
+  pacientes: Paciente[];
+  len:number;
+  opt2id={};
 
   constructor(
-    public dialog:MatDialog
-  ) { }
+    public dialog:MatDialog,
+    private fileservice:FileSystemService,
+
+  ) { 
+    this.pacientes=this.fileservice.get_patients();
+    this.len=this.fileservice.get_len();
+    var opts=this.fileservice.get_patients_names();
+    this.options=opts[0];
+    this.opt2id=opts[1];
+
+  }
 
 
   ngOnInit(): void {
