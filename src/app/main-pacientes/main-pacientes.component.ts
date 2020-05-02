@@ -22,7 +22,8 @@ export class MainPacientesComponent implements OnInit {
   options: string[];
   filteredOptions: Observable<string[]>;
 
-  paciente: string;
+  patient_name: string;
+  full_patient: Paciente;
   pacientes: Paciente[];
   len: number;
   opt2id = {};
@@ -47,7 +48,7 @@ export class MainPacientesComponent implements OnInit {
         startWith(''),
         map(value => this._filter(value)),
       );
-    this.paciente = "";
+    this.patient_name = "";
   }
 
   private _filter(value: string): string[] {
@@ -57,7 +58,8 @@ export class MainPacientesComponent implements OnInit {
   }
 
   patientSelected(patient: string): void {
-    this.paciente = patient
+    this.patient_name = patient
+    this.full_patient = this.fileservice.get_patient(this.opt2id[patient])
   }
 
   newPatientForm(): void {
@@ -65,7 +67,7 @@ export class MainPacientesComponent implements OnInit {
   }
 
   delPatientDiag(): void {
-    this.dialog.open(DelConfirmDialogComponent, { data: { name: this.paciente, id: this.opt2id[this.paciente] } })
+    this.dialog.open(DelConfirmDialogComponent, { data: { name: this.patient_name, id: this.opt2id[this.patient_name] } })
   }
 
 }

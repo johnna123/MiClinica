@@ -11,8 +11,8 @@ export class Paciente {
     transtornos_tiroides: boolean;
     hemorragias_freq: boolean;
     tomando_medicamentos: boolean;
-    Embarazo: boolean;
-    Tratamiento_psiquiatrico: boolean;
+    embarazo: boolean;
+    tratamiento_psiquiatrico: boolean;
 
     alergia: string;
     enf_otras: string;

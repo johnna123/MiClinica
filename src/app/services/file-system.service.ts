@@ -41,6 +41,10 @@ export class FileSystemService {
     return [lista, data];
   }
 
+  get_patient(id: string): Paciente{
+    return JSON.parse(localStorage.getItem(id));
+  }
+
   del_patient(id: string): void {
     localStorage.removeItem(id);
   }
