@@ -16,6 +16,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import {MatListModule} from '@angular/material/list';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -56,6 +57,7 @@ import { DelConfirmDialogComponent } from './del-confirm-dialog/del-confirm-dial
     MatSlideToggleModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatListModule,
   ],
   entryComponents: [
     NewPatientFormComponent,
