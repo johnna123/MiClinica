@@ -1,2 +1,0 @@
-# MiClinica
- Lo que es
