@@ -33,7 +33,6 @@ export class MainPacientesComponent implements OnInit {
     private fileservice: FileSystemService,
 
   ) {
-    this.pacientes = this.fileservice.get_patients();
     this.len = this.fileservice.get_len();
     var opts = this.fileservice.get_patients_names();
     this.options = opts[0];

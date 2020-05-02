@@ -6,28 +6,29 @@ import { Paciente } from '../shared/paciente';
 })
 export class FileSystemService {
 
-  constructor() { }
+  constructor() {
+    if (localStorage.getItem("current_id") === null) {
+      localStorage.setItem("current_id", "0");
+    };
+  }
+
+  update_cid(): void {
+    var id = Number(localStorage.getItem("current_id"));
+    id += 1;
+    localStorage.setItem("current_id", id.toString());
+  }
 
   new_patient(paciente: Paciente): void {
-    var id = localStorage.length.toString();
+    var id = localStorage.getItem("current_id");
     paciente.id = id;
-    console.log(paciente);
     paciente.date_logged = Date.now().toString();
     localStorage.setItem(id, JSON.stringify(paciente));
+    this.update_cid();
   }
 
   update_patient(paciente: Paciente): void {
     var id = paciente.id;
     localStorage.setItem(id, JSON.stringify(paciente));
-  }
-
-  get_patients(): Paciente[] {
-    var n_items = localStorage.length;
-    var data = [];
-    while (n_items--) {
-      data.push(localStorage.getItem(localStorage.key(n_items)));
-    }
-    return data;
   }
 
   get_len(): number {
@@ -42,8 +43,10 @@ export class FileSystemService {
     while (n_items--) {
 
       name = JSON.parse(localStorage.getItem(localStorage.key(n_items))).name;
-      lista.push(name);
-      data[name] = JSON.parse(localStorage.getItem(localStorage.key(n_items))).id;
+      if(name){
+        lista.push(name);
+        data[name] = JSON.parse(localStorage.getItem(localStorage.key(n_items))).id;
+      }
     }
     return [lista, data];
   }
