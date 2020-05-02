@@ -59,6 +59,8 @@
     <button class="gen-button" mat-raised-button (click)="newPatientForm()">Nuevo Paciente</button>
     <button class="gen-button" mat-raised-button [disabled]="!patient_name" (click)="delPatientDiag()">Eliminar
       Paciente</button>
+    <button class="gen-button" mat-raised-button [disabled]="!patient_name" (click)="updatePatientDiag()">Modificar
+      Datos</button>
     <button class="gen-button" mat-raised-button [disabled]="!patient_name">Agendar Cita</button>
 
   </div>

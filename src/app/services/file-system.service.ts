@@ -11,6 +11,13 @@ export class FileSystemService {
   new_patient(paciente: Paciente): void {
     var id = localStorage.length.toString();
     paciente.id = id;
+    console.log(paciente);
+    paciente.date_logged = Date.now().toString();
+    localStorage.setItem(id, JSON.stringify(paciente));
+  }
+
+  update_patient(paciente: Paciente): void {
+    var id = paciente.id;
     localStorage.setItem(id, JSON.stringify(paciente));
   }
 
@@ -31,17 +38,17 @@ export class FileSystemService {
     var n_items = localStorage.length;
     var data = {};
     var lista = [];
-    var name="";
+    var name = "";
     while (n_items--) {
 
-      name=JSON.parse(localStorage.getItem(localStorage.key(n_items))).name;
+      name = JSON.parse(localStorage.getItem(localStorage.key(n_items))).name;
       lista.push(name);
-      data[name]= JSON.parse(localStorage.getItem(localStorage.key(n_items))).id;
+      data[name] = JSON.parse(localStorage.getItem(localStorage.key(n_items))).id;
     }
     return [lista, data];
   }
 
-  get_patient(id: string): Paciente{
+  get_patient(id: string): Paciente {
     return JSON.parse(localStorage.getItem(id));
   }
 

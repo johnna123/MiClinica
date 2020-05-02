@@ -70,4 +70,8 @@ export class MainPacientesComponent implements OnInit {
     this.dialog.open(DelConfirmDialogComponent, { data: { name: this.patient_name, id: this.opt2id[this.patient_name] } })
   }
 
+  updatePatientDiag():void{
+    this.dialog.open(NewPatientFormComponent, { width: '750px', height: '600px',data:this.full_patient})
+  }
+
 }

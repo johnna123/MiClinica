@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FileSystemService } from '../services/file-system.service'
+import {MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { Inject } from '@angular/core';
 
 import { Paciente } from '../shared/paciente';
 
@@ -12,6 +14,7 @@ import { Paciente } from '../shared/paciente';
 })
 export class NewPatientFormComponent implements OnInit {
 
+  update:boolean=false;
   patient: Paciente;
   newPatForm: FormGroup;
   formErrors = {
@@ -37,12 +40,14 @@ export class NewPatientFormComponent implements OnInit {
     public dialogRef: MatDialogRef<NewPatientFormComponent>,
     private fb: FormBuilder,
     private fileservice: FileSystemService,
+    @Inject(MAT_DIALOG_DATA) public data: any,
   ) {
     this.createForm();
   }
 
   createForm() {
     this.newPatForm = this.fb.group({
+      id:'',
       name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(25)]],
       birth: ["", [Validators.required]],
       phone: ["", Validators.pattern("[0-9]*")],
@@ -60,7 +65,36 @@ export class NewPatientFormComponent implements OnInit {
       alergia: [""],
       enf_otras: [""],
       drogas: [""],
+
+      cita: [""],
+      cita_d: [""],
     });
+
+    if(this.data){
+      this.newPatForm.get('id').setValue(this.data.id);
+      this.newPatForm.get('name').setValue(this.data.name);
+      this.newPatForm.get('birth').setValue(this.data.birth);
+      this.newPatForm.get('phone').setValue(this.data.phone);
+      this.newPatForm.get('date_logged').setValue(this.data.date_logged);
+
+      this.newPatForm.get('diabetes').setValue(this.data.diabetes);
+      this.newPatForm.get('hipertension').setValue(this.data.hipertension);
+      this.newPatForm.get('lupus').setValue(this.data.lupus);
+      this.newPatForm.get('transtornos_tiroides').setValue(this.data.transtornos_tiroides);
+      this.newPatForm.get('hemorragias_freq').setValue(this.data.hemorragias_freq);
+      this.newPatForm.get('tomando_medicamentos').setValue(this.data.tomando_medicamentos);
+      this.newPatForm.get('embarazo').setValue(this.data.embarazo);
+      this.newPatForm.get('tratamiento_psiquiatrico').setValue(this.data.tratamiento_psiquiatrico);
+
+      this.newPatForm.get('alergia').setValue(this.data.alergia);
+      this.newPatForm.get('enf_otras').setValue(this.data.enf_otras);
+      this.newPatForm.get('drogas').setValue(this.data.drogas);
+
+      this.newPatForm.get('cita').setValue(this.data.cita);
+      this.newPatForm.get('cita_d').setValue(this.data.cita_d);
+
+      this.update=true;
+    }
     this.newPatForm.valueChanges
       .subscribe(data => this.onValueChanged(data));
   }
@@ -92,10 +126,14 @@ export class NewPatientFormComponent implements OnInit {
   }
 
   onSubmit() {
-    this.patient = this.newPatForm.value;
-    this.patient.date_logged = Date.now().toString();
-    this.fileservice.new_patient(this.patient);
-    this.dialogRef.close();
+    if(this.update){
+      this.fileservice.update_patient(this.newPatForm.value);
+      this.dialogRef.close();
+    }
+    else{
+      this.fileservice.new_patient(this.newPatForm.value);
+      this.dialogRef.close();
+    };
   }
 
 }
