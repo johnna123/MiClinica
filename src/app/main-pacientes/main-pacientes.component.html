@@ -17,17 +17,17 @@
       </div>
 
       <div class="form-container">
-        <mat-list class="small-item">
+        <div class="small-item">
           <mat-card-subtitle>Enfermedades y condiciones conocidas:</mat-card-subtitle>
-          <mat-list-item *ngIf="full_patient.diabetes">Diabetes</mat-list-item>
-          <mat-list-item *ngIf="full_patient.hipertension">Hipertension</mat-list-item>
-          <mat-list-item *ngIf="full_patient.lupus">Lupus</mat-list-item>
-          <mat-list-item *ngIf="full_patient.transtornos_tiroides">Transtornos de tiroides</mat-list-item>
-          <mat-list-item *ngIf="full_patient.hemorragias_freq">Hemorragias Frecuentes</mat-list-item>
-          <mat-list-item *ngIf="full_patient.tomando_medicamentos">Tomando medicamento</mat-list-item>
-          <mat-list-item *ngIf="full_patient.embarazo">Embarazo</mat-list-item>
-          <mat-list-item *ngIf="full_patient.tratamiento_psiquiatrico">Tratamiento Psiquiatrico</mat-list-item>
-        </mat-list>
+          <div *ngIf="full_patient.diabetes">Diabetes</div>
+          <div *ngIf="full_patient.hipertension">Hipertension</div>
+          <div *ngIf="full_patient.lupus">Lupus</div>
+          <div *ngIf="full_patient.transtornos_tiroides">Transtornos de tiroides</div>
+          <div *ngIf="full_patient.hemorragias_freq">Hemorragias Frecuentes</div>
+          <div *ngIf="full_patient.tomando_medicamentos">Tomando medicamento</div>
+          <div *ngIf="full_patient.embarazo">Embarazo</div>
+          <div *ngIf="full_patient.tratamiento_psiquiatrico">Tratamiento Psiquiatrico</div>
+        </div>
 
         <div class="big-item">
           <mat-card>
