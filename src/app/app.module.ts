@@ -29,6 +29,7 @@ import { NewPatientFormComponent } from './new-patient-form/new-patient-form.com
 
 import { FileSystemService } from './services/file-system.service';
 import { DelConfirmDialogComponent } from './del-confirm-dialog/del-confirm-dialog.component';
+import { NewApointmentFormComponent } from './new-apointment-form/new-apointment-form.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { DelConfirmDialogComponent } from './del-confirm-dialog/del-confirm-dial
     HeaderComponent,
     AutocompleteFilterExample,
     NewPatientFormComponent,
-    DelConfirmDialogComponent
+    DelConfirmDialogComponent,
+    NewApointmentFormComponent
   ],
   imports: [
     BrowserModule,
@@ -62,6 +64,7 @@ import { DelConfirmDialogComponent } from './del-confirm-dialog/del-confirm-dial
   entryComponents: [
     NewPatientFormComponent,
     DelConfirmDialogComponent,
+    NewApointmentFormComponent,
   ],
   providers: [
     MatDatepickerModule,

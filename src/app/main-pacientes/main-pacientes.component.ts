@@ -25,7 +25,6 @@ export class MainPacientesComponent implements OnInit {
   patient_name: string;
   full_patient: Paciente;
   pacientes: Paciente[];
-  len: number;
   opt2id = {};
 
   constructor(
@@ -33,7 +32,6 @@ export class MainPacientesComponent implements OnInit {
     private fileservice: FileSystemService,
 
   ) {
-    this.len = this.fileservice.get_len();
     var opts = this.fileservice.get_patients_names();
     this.options = opts[0];
     this.opt2id = opts[1];
