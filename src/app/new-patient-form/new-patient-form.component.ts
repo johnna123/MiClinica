@@ -89,7 +89,7 @@ export class NewPatientFormComponent implements OnInit {
 
       this.newPatForm.get('citas').setValue(this.data.citas);
 
-    }
+    };
     this.newPatForm.valueChanges
       .subscribe(data => this.onValueChanged(data));
   }

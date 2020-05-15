@@ -152,4 +152,21 @@ export class FileSystemService {
     this.push_patient_data(full_pat);
   }
 
+  get_apointment(aid,pid):Cita{
+    var pat=this.get_patient(pid);
+    var c:Cita;
+    pat.citas.forEach(function (value) {
+      if (value.ap_id == aid) {
+        c = value;
+        return;
+      }
+    });
+    return c;
+  }
+
+  get_name(id):string{
+    var pat=this.get_patient(id)
+    return pat.name;
+  }
+
 }

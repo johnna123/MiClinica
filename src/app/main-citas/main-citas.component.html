@@ -6,6 +6,7 @@
             <mat-card-subtitle>{{ap.patient}}</mat-card-subtitle>
 
             <mat-card-actions>
+                <button class="gen-button" mat-raised-button (click)="updatApointmenttDiag(ap.ap_id,ap.pid)">Editar Cita</button>
                 <button class="gen-button" mat-raised-button (click)="delApointmentForm(ap.ap_id,ap.pid)">Cancelar Cita</button>
             </mat-card-actions>
         </mat-card>

@@ -11,8 +11,10 @@ import { FileSystemService } from '../services/file-system.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Inject } from '@angular/core';
 
-import {Cita} from '../shared/cita';
+import { Cita } from '../shared/cita';
 
 
 @Component({
@@ -31,6 +33,8 @@ export class NewApointmentFormComponent implements OnInit {
 
   newApointmentForm: FormGroup;
   apointment: Cita;
+
+  update:boolean=false;
 
   formErrors = {
     'name': '',
@@ -51,26 +55,44 @@ export class NewApointmentFormComponent implements OnInit {
     private fileservice: FileSystemService,
     private fb: FormBuilder,
     public dialogRef: MatDialogRef<NewApointmentFormComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any,
 
-  ) { 
+  ) {
     var opts = this.fileservice.get_patients_names();
     this.options = opts[0];
     this.opt2id = opts[1];
     this.createForm();
+
+
   }
 
   createForm() {
     this.newApointmentForm = this.fb.group({
       name: ['', [Validators.required]],
-      
+
       ap_date: ["", [Validators.required]],
-      ap_time:["",[Validators.required]],
+      ap_time: ["", [Validators.required]],
       details: [""],
-      cost:[0],
-      pay:[0],
-
-
+      cost: [0],
+      pay: [0],
+      
     });
+    
+    if (this.data) {
+      var aid = this.data[0]
+      var pid = this.data[1]
+      var apo = this.fileservice.get_apointment(aid, pid);
+      var name=this.fileservice.get_name(pid);
+
+      this.patientSelected(name);
+      this.newApointmentForm.get("ap_date").setValue(apo.ap_date);
+      this.newApointmentForm.get("ap_time").setValue(apo.ap_time);
+      this.newApointmentForm.get("details").setValue(apo.details);
+      this.newApointmentForm.get("cost").setValue(apo.cost);
+      this.newApointmentForm.get("pay").setValue(apo.pay);
+
+      this.update=true;
+    };
     this.newApointmentForm.valueChanges
       .subscribe(data => this.onValueChanged(data));
   }
@@ -78,11 +100,11 @@ export class NewApointmentFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.filteredOptions = this.myControl.valueChanges
-    .pipe(
-      startWith(''),
-      map(value => this._filter(value)),
-    );
-  this.patient_name = "";
+      .pipe(
+        startWith(''),
+        map(value => this._filter(value)),
+      );
+    this.patient_name = "";
   }
 
   private _filter(value: string): string[] {
@@ -120,8 +142,13 @@ export class NewApointmentFormComponent implements OnInit {
   }
 
   onSubmit() {
-    this.fileservice.push_apointment(this.newApointmentForm.value,this.opt2id[this.patient_name]);
-    this.dialogRef.close();
+    if(this.update){
+      console.log(this.newApointmentForm.value);
+    }
+    else{
+      this.fileservice.push_apointment(this.newApointmentForm.value, this.opt2id[this.patient_name]);
+      this.dialogRef.close();
+    }
   }
 
 }

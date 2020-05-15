@@ -31,4 +31,8 @@ export class MainCitasComponent implements OnInit {
     this.dialog.open(DelApointDialogComponent, { width: '750px', height: '600px', data: [aid, id] })
   }
 
+  updatApointmenttDiag(aid, id):void{
+    this.dialog.open(NewApointmentFormComponent, { width: '750px', height: '600px',data:[aid, id]})
+  }
+
 }
