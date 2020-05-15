@@ -28,6 +28,16 @@
 
 
 
+        <div *ngIf="en">
+          <mat-card><textarea matInput formControlName="details" placeholder="Tratamiento:"
+            rows=5></textarea></mat-card>
+            <mat-form-field>
+              <input matInput type="number" min="0" placeholder="Costo:" formControlName="cost" required>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput type="number" min="0" placeholder="A cuenta:" formControlName="pay" required>
+        </mat-form-field>
+        </div>
 
         <mat-dialog-actions>
 

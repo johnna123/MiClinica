@@ -1,3 +1,12 @@
 <mat-card *ngFor="let cita of data.citas">
     {{cita["ap_date"] | date}} {{cita["ap_time"]}}
+    <mat-card-content>
+        {{cita.details}}
+        <p>Costo: {{cita.cost}} A cuenta: {{cita.pay}}</p>
+    </mat-card-content>
+    <mat-card-actions>
+        <button class="gen-button" mat-raised-button (click)="updatApointmenttDiag(cita.ap_id,cita.pid)">Editar Detalles</button>
+        <button class="gen-button" mat-raised-button (click)="delApointmentForm(cita.ap_id,cita.pid)">Borrar Datos</button>
+    </mat-card-actions>
 </mat-card>
+Saldo: {{saldo}}
