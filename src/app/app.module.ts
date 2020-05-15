@@ -31,6 +31,7 @@ import { FileSystemService } from './services/file-system.service';
 import { DelConfirmDialogComponent } from './del-confirm-dialog/del-confirm-dialog.component';
 import { NewApointmentFormComponent } from './new-apointment-form/new-apointment-form.component';
 import { PatApsComponent } from './pat-aps/pat-aps.component';
+import { DelApointDialogComponent } from './del-apoint-dialog/del-apoint-dialog.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { PatApsComponent } from './pat-aps/pat-aps.component';
     NewPatientFormComponent,
     DelConfirmDialogComponent,
     NewApointmentFormComponent,
-    PatApsComponent
+    PatApsComponent,
+    DelApointDialogComponent
   ],
   imports: [
     BrowserModule,

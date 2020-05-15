@@ -5,6 +5,9 @@
             <mat-card-title>{{ap.ap_date | date}}  {{ap.ap_time}}</mat-card-title>
             <mat-card-subtitle>{{ap.patient}}</mat-card-subtitle>
 
+            <mat-card-actions>
+                <button class="gen-button" mat-raised-button (click)="delApointmentForm(ap.ap_id,ap.pid)">Cancelar Cita</button>
+            </mat-card-actions>
         </mat-card>
     </div>
 

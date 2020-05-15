@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FileSystemService } from '../services/file-system.service';
 import { NewApointmentFormComponent } from '../new-apointment-form/new-apointment-form.component'
+import { DelApointDialogComponent } from '../del-apoint-dialog/del-apoint-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
-import {Cita} from '../shared/cita';
+import { Cita } from '../shared/cita';
 
 @Component({
   selector: 'app-main-citas',
@@ -11,19 +12,23 @@ import {Cita} from '../shared/cita';
 })
 export class MainCitasComponent implements OnInit {
 
-  apointments:Cita[];
+  apointments: Cita[];
 
   constructor(
     private fileservice: FileSystemService,
     public dialog: MatDialog,
-    ) { }
+  ) { }
 
   ngOnInit(): void {
-    this.apointments=this.fileservice.get_active_aps();
+    this.apointments = this.fileservice.get_active_aps();
   }
 
   newApointmentForm(): void {
     this.dialog.open(NewApointmentFormComponent, { width: '750px', height: '600px' })
+  }
+
+  delApointmentForm(aid, id): void {
+    this.dialog.open(DelApointDialogComponent, { width: '750px', height: '600px', data: [aid, id] })
   }
 
 }
