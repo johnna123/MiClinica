@@ -1,8 +1,15 @@
 <div class="form-container">
     <div class="big-item">
-        <p>Proximas Citas</p>
+        <p>Proximas Citas:</p>
+        <mat-card *ngFor="let ap of apointments">
+            <mat-card-title>{{ap.ap_date | date}}  {{ap.ap_time}}</mat-card-title>
+            <mat-card-subtitle>{{ap.patient}}</mat-card-subtitle>
+
+        </mat-card>
     </div>
-    
+
+
+
     <div class="small-item">
         <button class="gen-button" mat-raised-button (click)="newApointmentForm()">Agendar Cita</button>
     </div>

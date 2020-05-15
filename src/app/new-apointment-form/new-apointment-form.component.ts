@@ -22,7 +22,6 @@ import {Cita} from '../shared/cita';
 })
 export class NewApointmentFormComponent implements OnInit {
 
-
   myControl = new FormControl();
   options: string[];
   opt2id = {};
@@ -63,9 +62,14 @@ export class NewApointmentFormComponent implements OnInit {
   createForm() {
     this.newApointmentForm = this.fb.group({
       name: ['', [Validators.required]],
+      
       ap_date: ["", [Validators.required]],
-
+      ap_time:["",[Validators.required]],
       details: [""],
+      cost:[0],
+      pay:[0],
+
+
     });
     this.newApointmentForm.valueChanges
       .subscribe(data => this.onValueChanged(data));
@@ -89,6 +93,7 @@ export class NewApointmentFormComponent implements OnInit {
 
   patientSelected(patient: string): void {
     this.patient_name = patient
+    this.newApointmentForm.get('name').setValue(patient);
   }
 
   onValueChanged(data?: any) {

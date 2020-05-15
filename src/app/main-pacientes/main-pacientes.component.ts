@@ -7,6 +7,7 @@ import { map, startWith } from 'rxjs/operators';
 
 import { NewPatientFormComponent } from '../new-patient-form/new-patient-form.component';
 import { DelConfirmDialogComponent } from '../del-confirm-dialog/del-confirm-dialog.component';
+import {PatApsComponent} from '../pat-aps/pat-aps.component';
 import { Paciente } from '../shared/paciente';
 import { FileSystemService } from '../services/file-system.service';
 
@@ -69,6 +70,10 @@ export class MainPacientesComponent implements OnInit {
 
   updatePatientDiag():void{
     this.dialog.open(NewPatientFormComponent, { width: '750px', height: '600px',data:this.full_patient})
+  }
+
+  showAps():void{
+    this.dialog.open(PatApsComponent, { width: '750px', height: '600px',data:this.full_patient})
   }
 
 }

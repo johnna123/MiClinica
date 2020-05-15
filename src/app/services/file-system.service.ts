@@ -11,6 +11,9 @@ export class FileSystemService {
     if (localStorage.getItem("current_id") === null) {
       localStorage.setItem("current_id", "0");
     };
+    if (localStorage.getItem("active_aps") === null) {
+      localStorage.setItem("active_aps", "[]");
+    };
   }
 
   update_cid(): void {
@@ -88,9 +91,21 @@ export class FileSystemService {
     var apo = new Cita();
     var pat = this.get_patient(id);
     apo.ap_date = data.ap_date;
+    apo.ap_time = data.ap_time;
     apo.details = data.details;
+    apo.cost = data.cost;
+    apo.pay = data.pay;
     pat.citas.push(apo);
-    this.push_patient_data(pat)
+    this.push_patient_data(pat);
+
+    var aps=this.get_active_aps();
+    apo["patient"]=pat.name;
+    aps.push(apo);
+    localStorage.setItem("active_aps", JSON.stringify(aps));
+  }
+
+  get_active_aps():Cita[]{
+    return JSON.parse(localStorage.getItem("active_aps"));
   }
 
 }
