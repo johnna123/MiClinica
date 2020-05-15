@@ -122,7 +122,6 @@ export class FileSystemService {
     var idx = 0;
     arr.forEach(function (value) {
       if (value.ap_id == id) {
-        console.log("borrar: ", value)
         idx = count;
         return;
       }
@@ -152,9 +151,14 @@ export class FileSystemService {
     this.push_patient_data(full_pat);
   }
 
-  get_apointment(aid,pid):Cita{
-    var pat=this.get_patient(pid);
-    var c:Cita;
+  update_apointment(data, aid, pid): void {
+    this.delete_apointment([aid,pid]);
+    this.push_apointment(data,pid);
+  }
+
+  get_apointment(aid, pid): Cita {
+    var pat = this.get_patient(pid);
+    var c = new Cita;
     pat.citas.forEach(function (value) {
       if (value.ap_id == aid) {
         c = value;
@@ -164,8 +168,8 @@ export class FileSystemService {
     return c;
   }
 
-  get_name(id):string{
-    var pat=this.get_patient(id)
+  get_name(id): string {
+    var pat = this.get_patient(id)
     return pat.name;
   }
 

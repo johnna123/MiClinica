@@ -20,7 +20,6 @@ export class PatApsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.apos = this.data;
   }
 
 }

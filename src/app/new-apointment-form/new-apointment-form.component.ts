@@ -33,8 +33,11 @@ export class NewApointmentFormComponent implements OnInit {
 
   newApointmentForm: FormGroup;
   apointment: Cita;
+  pid: number = -1;
+  aid: number = -1;
 
-  update:boolean=false;
+  update: boolean = false;
+  en: boolean = false;
 
   formErrors = {
     'name': '',
@@ -75,23 +78,30 @@ export class NewApointmentFormComponent implements OnInit {
       details: [""],
       cost: [0],
       pay: [0],
-      
+
     });
-    
+
     if (this.data) {
-      var aid = this.data[0]
-      var pid = this.data[1]
-      var apo = this.fileservice.get_apointment(aid, pid);
-      var name=this.fileservice.get_name(pid);
+      this.pid = this.data[1]
+      this.aid = this.data[0]
+      var name = this.fileservice.get_name(this.pid);
+      if (this.aid) {
+        var apo = this.fileservice.get_apointment(this.aid, this.pid);
 
-      this.patientSelected(name);
-      this.newApointmentForm.get("ap_date").setValue(apo.ap_date);
-      this.newApointmentForm.get("ap_time").setValue(apo.ap_time);
-      this.newApointmentForm.get("details").setValue(apo.details);
-      this.newApointmentForm.get("cost").setValue(apo.cost);
-      this.newApointmentForm.get("pay").setValue(apo.pay);
+        this.patientSelected(name);
+        this.newApointmentForm.get("ap_date").setValue(apo.ap_date);
+        this.newApointmentForm.get("ap_time").setValue(apo.ap_time);
+        this.newApointmentForm.get("details").setValue(apo.details);
+        this.newApointmentForm.get("cost").setValue(apo.cost);
+        this.newApointmentForm.get("pay").setValue(apo.pay);
 
-      this.update=true;
+        this.update = true;
+        this.en = true;
+      }
+      else {
+        this.patientSelected(name);
+        this.en = true;
+      }
     };
     this.newApointmentForm.valueChanges
       .subscribe(data => this.onValueChanged(data));
@@ -142,13 +152,13 @@ export class NewApointmentFormComponent implements OnInit {
   }
 
   onSubmit() {
-    if(this.update){
-      console.log(this.newApointmentForm.value);
+    if (this.update) {
+      this.fileservice.update_apointment(this.newApointmentForm.value, this.aid, this.pid);
     }
-    else{
-      this.fileservice.push_apointment(this.newApointmentForm.value, this.opt2id[this.patient_name]);
-      this.dialogRef.close();
+    else {
+      this.fileservice.push_apointment(this.newApointmentForm.value, this.opt2id[this.newApointmentForm.value.name]);
     }
+    this.dialogRef.close();
   }
 
 }

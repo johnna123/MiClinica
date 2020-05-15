@@ -7,7 +7,8 @@ import { map, startWith } from 'rxjs/operators';
 
 import { NewPatientFormComponent } from '../new-patient-form/new-patient-form.component';
 import { DelConfirmDialogComponent } from '../del-confirm-dialog/del-confirm-dialog.component';
-import {PatApsComponent} from '../pat-aps/pat-aps.component';
+import { PatApsComponent } from '../pat-aps/pat-aps.component';
+import { NewApointmentFormComponent } from '../new-apointment-form/new-apointment-form.component'
 import { Paciente } from '../shared/paciente';
 import { FileSystemService } from '../services/file-system.service';
 
@@ -68,12 +69,16 @@ export class MainPacientesComponent implements OnInit {
     this.dialog.open(DelConfirmDialogComponent, { data: { name: this.patient_name, id: this.opt2id[this.patient_name] } })
   }
 
-  updatePatientDiag():void{
-    this.dialog.open(NewPatientFormComponent, { width: '750px', height: '600px',data:this.full_patient})
+  updatePatientDiag(): void {
+    this.dialog.open(NewPatientFormComponent, { width: '750px', height: '600px', data: this.full_patient })
   }
 
-  showAps():void{
-    this.dialog.open(PatApsComponent, { width: '750px', height: '600px',data:this.full_patient})
+  showAps(): void {
+    this.dialog.open(PatApsComponent, { width: '750px', height: '600px', data: this.full_patient })
+  }
+
+  newApointmentForm(): void {
+    this.dialog.open(NewApointmentFormComponent, { width: '750px', height: '600px',data:["", this.opt2id[this.patient_name]]})
   }
 
 }
