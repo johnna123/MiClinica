@@ -24,7 +24,7 @@ export class MainCitasComponent implements OnInit {
   }
 
   newApointmentForm(): void {
-    this.dialog.open(NewApointmentFormComponent, { width: '750px', height: '600px' })
+    this.dialog.open(NewApointmentFormComponent, { width: '440px', height: '260px' })
   }
 
   delApointmentForm(aid, id): void {

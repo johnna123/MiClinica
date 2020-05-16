@@ -70,7 +70,7 @@ export class MainPacientesComponent implements OnInit {
   }
 
   newPatientForm(): void {
-    this.dialog.open(NewPatientFormComponent, { width: '750px', height: '600px' })
+    this.dialog.open(NewPatientFormComponent, { width: '750px', height: '570px' })
   }
 
   delPatientDiag(): void {
@@ -78,7 +78,7 @@ export class MainPacientesComponent implements OnInit {
   }
 
   updatePatientDiag(): void {
-    this.dialog.open(NewPatientFormComponent, { width: '750px', height: '600px', data: this.full_patient })
+    this.dialog.open(NewPatientFormComponent, { width: '750px', height: '570px', data: this.full_patient })
   }
 
   showAps(): void {
@@ -86,7 +86,7 @@ export class MainPacientesComponent implements OnInit {
   }
 
   newApointmentForm(): void {
-    this.dialog.open(NewApointmentFormComponent, { width: '750px', height: '600px',data:["", this.opt2id[this.patient_name]]})
+    this.dialog.open(NewApointmentFormComponent, { width: '440px', height: '450px',data:["", this.opt2id[this.patient_name]]})
   }
 
 }
