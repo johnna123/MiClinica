@@ -1,6 +1,6 @@
-<form class="form-container">
-  <div class="big-item">
-    <mat-form-field class="full-width">
+<form class="full-container">
+  <div class="main-patient-container">
+    <mat-form-field class="search-bar">
       <input type="text" placeholder="Busqueda:" aria-label="Number" matInput [formControl]="myControl"
         [matAutocomplete]="auto">
       <mat-autocomplete #auto="matAutocomplete" (optionSelected)='patientSelected($event.option.value)'>
@@ -10,60 +10,55 @@
       </mat-autocomplete>
     </mat-form-field>
 
-    <mat-card *ngIf="patient_name" class="full-height">
-      <div class="full-width">
+    <mat-card class="patient-card" *ngIf="patient_name">
+      <mat-card-title-group class="patient-title">
         <mat-card-title>{{full_patient.name}}</mat-card-title>
+        <mat-card-subtitle>{{age}} años</mat-card-subtitle>
         <mat-card-subtitle>{{full_patient.phone}}</mat-card-subtitle>
-      </div>
+        <button class="hist-button" mat-raised-button [disabled]="!this.full_patient.citas.length" (click)="showAps()">Ver
+          Historial</button>
+      </mat-card-title-group>
 
-      <div class="form-container">
-        <mat-list class="small-item">
-          <mat-card-subtitle>Enfermedades y condiciones conocidas:</mat-card-subtitle>
-          <mat-list-item *ngIf="full_patient.diabetes">Diabetes</mat-list-item>
-          <mat-list-item *ngIf="full_patient.hipertension">Hipertension</mat-list-item>
-          <mat-list-item *ngIf="full_patient.lupus">Lupus</mat-list-item>
-          <mat-list-item *ngIf="full_patient.transtornos_tiroides">Transtornos de tiroides</mat-list-item>
-          <mat-list-item *ngIf="full_patient.hemorragias_freq">Hemorragias Frecuentes</mat-list-item>
-          <mat-list-item *ngIf="full_patient.tomando_medicamentos">Tomando medicamento</mat-list-item>
-          <mat-list-item *ngIf="full_patient.embarazo">Embarazo</mat-list-item>
-          <mat-list-item *ngIf="full_patient.tratamiento_psiquiatrico">Tratamiento Psiquiatrico</mat-list-item>
-        </mat-list>
-
-        <div class="big-item">
-          <mat-card>
+      <mat-card class="patient-details">
+        <mat-card class="patient-temps">
+          <mat-list class="temps-list">
+            <mat-card-subtitle>Enfermedades y condiciones conocidas:</mat-card-subtitle>
+            <div *ngIf="full_patient.diabetes">Diabetes</div>
+            <div *ngIf="full_patient.hipertension">Hipertension</div>
+            <div *ngIf="full_patient.lupus">Lupus</div>
+            <div *ngIf="full_patient.transtornos_tiroides">Transtornos de tiroides</div>
+            <div *ngIf="full_patient.hemorragias_freq">Hemorragias Frecuentes</div>
+            <div *ngIf="full_patient.tomando_medicamentos">Tomando medicamento</div>
+            <div *ngIf="full_patient.embarazo">Embarazo</div>
+            <div *ngIf="full_patient.tratamiento_psiquiatrico">Tratamiento Psiquiatrico</div>
+          </mat-list>
+        </mat-card>
+        <mat-card class="patient-texts">
+          <mat-card class="big-text">
             <mat-card-subtitle>Enfermedades:</mat-card-subtitle>
             <p>{{full_patient.enf_otras}}</p>
           </mat-card>
 
-          <mat-card>
+          <mat-card class="big-text">
             <mat-card-subtitle>Alergias:</mat-card-subtitle>
             <p>{{full_patient.alergia}}</p>
           </mat-card>
 
-          <mat-card>
+          <mat-card class="big-text">
             <mat-card-subtitle>Drogas y enervantes:</mat-card-subtitle>
             <p>{{full_patient.drogas}}</p>
           </mat-card>
-          <button class="gen-button" mat-raised-button [disabled]="!this.full_patient.citas.length"
-            (click)="showAps()">Ver Historial</button>
-        </div>
-
-      </div>
-
-
-
+        </mat-card>
+      </mat-card>
     </mat-card>
-
   </div>
 
-  <div class="small-item">
-
-    <button class="gen-button" mat-raised-button (click)="newPatientForm()">Nuevo Paciente</button>
-    <button class="gen-button" mat-raised-button [disabled]="!patient_name" (click)="delPatientDiag()">Eliminar
+  <mat-card class="buttons">
+    <button mat-raised-button (click)="newPatientForm()">Nuevo Paciente</button>
+    <button mat-raised-button [disabled]="!patient_name" (click)="delPatientDiag()">Eliminar
       Paciente</button>
-    <button class="gen-button" mat-raised-button [disabled]="!patient_name" (click)="updatePatientDiag()">Modificar
+    <button mat-raised-button [disabled]="!patient_name" (click)="updatePatientDiag()">Modificar
       Datos</button>
-    <button class="gen-button" mat-raised-button [disabled]="!patient_name" (click)="newApointmentForm()">Agendar Cita</button>
-
-  </div>
+    <button mat-raised-button [disabled]="!patient_name" (click)="newApointmentForm()">Agendar Cita</button>
+  </mat-card>
 </form>

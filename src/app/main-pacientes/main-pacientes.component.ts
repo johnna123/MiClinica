@@ -15,7 +15,9 @@ import { FileSystemService } from '../services/file-system.service';
 @Component({
   selector: 'app-main-pacientes',
   templateUrl: './main-pacientes.component.html',
-  styleUrls: ['./main-pacientes.component.scss']
+  styleUrls: [
+    './main-pacientes.component.scss',
+  ]
 })
 export class MainPacientesComponent implements OnInit {
 
@@ -28,6 +30,7 @@ export class MainPacientesComponent implements OnInit {
   full_patient: Paciente;
   pacientes: Paciente[];
   opt2id = {};
+  age:string="0";
 
   constructor(
     public dialog: MatDialog,
@@ -59,6 +62,11 @@ export class MainPacientesComponent implements OnInit {
   patientSelected(patient: string): void {
     this.patient_name = patient
     this.full_patient = this.fileservice.get_patient(this.opt2id[patient])
+
+    
+    var dn=new Date();
+    var b=new Date(this.full_patient.birth);
+    this.age=((Number(dn)-Number(b))/1000/60/60/24/365).toString().split(".")[0]
   }
 
   newPatientForm(): void {
