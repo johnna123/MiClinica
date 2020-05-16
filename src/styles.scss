@@ -34,6 +34,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   flex-direction: column;
 }
 
+.cols{
+  flex-direction: column;
+}
+
 .search-bar{
   width: 60%;
   margin:5px;
@@ -81,6 +85,17 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .hist-button{
   display: flex;
   height: 40px;
+}
+
+.head-pat-form{
+  display: flex;
+  padding: 0;
+}
+
+.head-form-el{
+  width: 33%;
+  flex-grow: 1;
+  margin-left: 5px;
 }
 
 
