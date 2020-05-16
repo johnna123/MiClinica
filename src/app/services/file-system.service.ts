@@ -105,11 +105,13 @@ export class FileSystemService {
     apo.ap_id = localStorage.getItem("current_ap_id");
     this.update_aid();
     pat.citas.push(apo);
+    pat.citas.sort((a, b) => (a.ap_date > b.ap_date) ? 1 : (a.ap_date === b.ap_date) ? ((a.ap_time > b.ap_time) ? 1 : -1) : -1 )
     this.push_patient_data(pat);
 
     var aps = this.get_active_aps();
     apo["patient"] = pat.name;
     aps.push(apo);
+    aps.sort((a, b) => (a.ap_date > b.ap_date) ? 1 : (a.ap_date === b.ap_date) ? ((a.ap_time > b.ap_time) ? 1 : -1) : -1 )
     localStorage.setItem("active_aps", JSON.stringify(aps));
   }
 
