@@ -1,12 +1,23 @@
-<mat-card *ngFor="let cita of data.citas">
-    {{cita["ap_date"] | date}} {{cita["ap_time"]}}
-    <mat-card-content>
-        {{cita.details}}
-        <p>Costo: {{cita.cost}} A cuenta: {{cita.pay}}</p>
-    </mat-card-content>
-    <mat-card-actions>
-        <button class="gen-button" mat-raised-button (click)="updatApointmenttDiag(cita.ap_id,cita.pid)">Editar Detalles</button>
-        <button class="gen-button" mat-raised-button (click)="delApointmentForm(cita.ap_id,cita.pid)">Borrar Datos</button>
-    </mat-card-actions>
-</mat-card>
-Saldo: {{saldo}}
+<div class="aps-dets-cont">
+    <mat-card class="container" *ngFor="let cita of data.citas">
+        <div>
+            <mat-card-title>{{cita["ap_date"] | date}} {{cita["ap_time"]}}</mat-card-title>
+            <mat-card-content>
+                {{cita.details}}
+                <p>Costo: {{cita.cost}} A cuenta: {{cita.pay}}</p>
+            </mat-card-content>
+        </div>
+        <div class="flex-spacer"></div>
+        <mat-card-actions>
+            <button mat-raised-button (click)="updatApointmenttDiag(cita.ap_id,cita.pid)">Editar Detalles</button>
+            <button mat-raised-button (click)="delApointmentForm(cita.ap_id,cita.pid)">Borrar Datos</button>
+        </mat-card-actions>
+    </mat-card>
+    
+    <div class="flex-spacer"></div>
+    <div class="container">
+        <div class="flex-spacer"></div>
+        <h3>Saldo: {{saldo}}</h3>
+    </div>
+    
+</div>

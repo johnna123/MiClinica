@@ -3,6 +3,16 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+.container{
+  display: flex;
+}
+
+.aps-dets-cont{
+  display: flex;
+  height: 100%;
+  flex-grow: 1 1;
+  flex-direction: column;
+}
 
 .full-container{
     display: flex;
@@ -68,14 +78,15 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   align-items: flex-end;
 }
 
-
-
-
-
 .hist-button{
   display: flex;
   height: 40px;
 }
+
+
+
+
+
 
 .flex-spacer {
   display: flex;
