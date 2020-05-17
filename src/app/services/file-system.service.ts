@@ -115,7 +115,17 @@ export class FileSystemService {
     localStorage.setItem("active_aps", JSON.stringify(aps));
   }
 
+
   get_active_aps(): Cita[] {
+    var now = new Date().toISOString();
+    var aps=JSON.parse(localStorage.getItem("active_aps"));
+    var new_aps=[];
+    aps.forEach(element => {
+      if(element.ap_date>now){
+        new_aps.push(element)
+      }
+    });
+    localStorage.setItem("active_aps", JSON.stringify(new_aps));
     return JSON.parse(localStorage.getItem("active_aps"));
   }
 
