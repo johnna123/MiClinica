@@ -121,8 +121,10 @@ export class NewPatientFormComponent implements OnInit {
   }
 
   onSubmit() {
-    this.fileservice.push_patient_data(this.newPatForm.value);
+    //this.fileservice.push_patient_data(this.newPatForm.value);
+    //parent.location.reload();
     this.dialogRef.close();
+    console.log(parent.location)
   }   
 
 }

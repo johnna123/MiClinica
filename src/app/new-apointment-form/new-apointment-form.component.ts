@@ -158,6 +158,7 @@ export class NewApointmentFormComponent implements OnInit {
     else {
       this.fileservice.push_apointment(this.newApointmentForm.value, this.opt2id[this.newApointmentForm.value.name]);
     }
+    parent.location.reload();
     this.dialogRef.close();
   }
 

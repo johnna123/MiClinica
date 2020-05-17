@@ -67,6 +67,7 @@ export class MainPacientesComponent implements OnInit {
     var dn=new Date();
     var b=new Date(this.full_patient.birth);
     this.age=((Number(dn)-Number(b))/1000/60/60/24/365).toString().split(".")[0]
+    console.log(window.self)
   }
 
   newPatientForm(): void {
