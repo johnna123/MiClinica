@@ -24,15 +24,18 @@ export class MainCitasComponent implements OnInit {
   }
 
   newApointmentForm(): void {
-    this.dialog.open(NewApointmentFormComponent, { width: '440px', height: '260px' })
+    let diag = this.dialog.open(NewApointmentFormComponent, { width: '440px', height: '260px' });
+    diag.afterClosed().subscribe(result => { if (result) {this.apointments = this.fileservice.get_active_aps()} })
   }
 
   delApointmentForm(aid, id): void {
-    this.dialog.open(DelApointDialogComponent, { width: '750px', height: '600px', data: [aid, id] })
+    let diag = this.dialog.open(DelApointDialogComponent, { width: '750px', height: '600px', data: [aid, id] });
+    diag.afterClosed().subscribe(result => { if (result) {this.apointments = this.fileservice.get_active_aps()} })
   }
 
-  updatApointmenttDiag(aid, id):void{
-    this.dialog.open(NewApointmentFormComponent, { width: '750px', height: '600px',data:[aid, id]})
+  updatApointmenttDiag(aid, id): void {
+    let diag = this.dialog.open(NewApointmentFormComponent, { width: '750px', height: '600px', data: [aid, id] });
+    diag.afterClosed().subscribe(result => { if (result) {this.apointments = this.fileservice.get_active_aps()} })
   }
 
 }

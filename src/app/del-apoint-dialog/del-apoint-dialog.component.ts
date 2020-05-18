@@ -24,8 +24,7 @@ export class DelApointDialogComponent implements OnInit {
 
   confDelete():void{
     this.fileservice.delete_apointment(this.data);
-    parent.location.reload();
-    this.dialogRef.close();
+    this.dialogRef.close(true);
   }
 
 }
