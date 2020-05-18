@@ -35,12 +35,12 @@ export class PatApsComponent implements OnInit {
   }
 
   delApointmentForm(aid, id): void {
-    let diag=this.dialog.open(DelApointDialogComponent, { width: '750px', height: '600px', data: [aid, id] });
+    let diag=this.dialog.open(DelApointDialogComponent, {  data: [aid, id] });
     diag.afterClosed().subscribe(result=>{if (result){this.dialogRef.close(this.data.name)}})
   }
 
   updatApointmenttDiag(aid, id): void {
-    let diag=this.dialog.open(NewApointmentFormComponent, { width: '750px', height: '600px', data: [aid, id] });
+    let diag=this.dialog.open(NewApointmentFormComponent, { width: '440px', height: '450px', data: [aid, id] });
     diag.afterClosed().subscribe(result=>{if (result){this.dialogRef.close(this.data.name)}})
   }
 
