@@ -16,7 +16,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import {MatListModule} from '@angular/material/list';
+import { MatListModule } from '@angular/material/list';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -32,6 +32,7 @@ import { DelConfirmDialogComponent } from './del-confirm-dialog/del-confirm-dial
 import { NewApointmentFormComponent } from './new-apointment-form/new-apointment-form.component';
 import { PatApsComponent } from './pat-aps/pat-aps.component';
 import { DelApointDialogComponent } from './del-apoint-dialog/del-apoint-dialog.component';
+import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -74,6 +75,7 @@ import { DelApointDialogComponent } from './del-apoint-dialog/del-apoint-dialog.
   providers: [
     MatDatepickerModule,
     FileSystemService,
+    {provide: MAT_DATE_LOCALE, useValue: 'es'},
   ],
   bootstrap: [AppComponent]
 })
