@@ -33,6 +33,8 @@ import { NewApointmentFormComponent } from './new-apointment-form/new-apointment
 import { PatApsComponent } from './pat-aps/pat-aps.component';
 import { DelApointDialogComponent } from './del-apoint-dialog/del-apoint-dialog.component';
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 
 @NgModule({
   declarations: [
@@ -65,6 +67,7 @@ import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/
     MatDatepickerModule,
     MatNativeDateModule,
     MatListModule,
+    FontAwesomeModule,
   ],
   entryComponents: [
     NewPatientFormComponent,

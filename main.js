@@ -16,7 +16,7 @@ function createWindow () {
 
   win.loadURL(`file://${__dirname}/dist/index.html`)
   win.setMenu(null)
-  win.webContents.openDevTools();
+  //win.webContents.openDevTools();
 
 
 
