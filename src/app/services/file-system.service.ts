@@ -105,23 +105,23 @@ export class FileSystemService {
     apo.ap_id = localStorage.getItem("current_ap_id");
     this.update_aid();
     pat.citas.push(apo);
-    pat.citas.sort((a, b) => (a.ap_date > b.ap_date) ? 1 : (a.ap_date === b.ap_date) ? ((a.ap_time > b.ap_time) ? 1 : -1) : -1 )
+    pat.citas.sort((a, b) => (a.ap_date > b.ap_date) ? 1 : (a.ap_date === b.ap_date) ? ((a.ap_time > b.ap_time) ? 1 : -1) : -1)
     this.push_patient_data(pat);
 
     var aps = this.get_active_aps();
     apo["patient"] = pat.name;
     aps.push(apo);
-    aps.sort((a, b) => (a.ap_date > b.ap_date) ? 1 : (a.ap_date === b.ap_date) ? ((a.ap_time > b.ap_time) ? 1 : -1) : -1 )
+    aps.sort((a, b) => (a.ap_date > b.ap_date) ? 1 : (a.ap_date === b.ap_date) ? ((a.ap_time > b.ap_time) ? 1 : -1) : -1)
     localStorage.setItem("active_aps", JSON.stringify(aps));
   }
 
 
   get_active_aps(): Cita[] {
     var now = new Date().toISOString();
-    var aps=JSON.parse(localStorage.getItem("active_aps"));
-    var new_aps=[];
+    var aps = JSON.parse(localStorage.getItem("active_aps"));
+    var new_aps = [];
     aps.forEach(element => {
-      if(element.ap_date>now){
+      if (element.ap_date > now) {
         new_aps.push(element)
       }
     });
@@ -164,8 +164,8 @@ export class FileSystemService {
   }
 
   update_apointment(data, aid, pid): void {
-    this.delete_apointment([aid,pid]);
-    this.push_apointment(data,pid);
+    this.delete_apointment([aid, pid]);
+    this.push_apointment(data, pid);
   }
 
   get_apointment(aid, pid): Cita {
@@ -183,6 +183,17 @@ export class FileSystemService {
   get_name(id): string {
     var pat = this.get_patient(id)
     return pat.name;
+  }
+
+  get_full_data(): any {
+    var values = {},
+      keys = Object.keys(localStorage),
+      i = keys.length;
+
+    while (i--) {
+      values[keys[i]]=localStorage.getItem(keys[i])
+    }
+    return values
   }
 
 }

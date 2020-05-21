@@ -78,7 +78,8 @@ export class MainPacientesComponent implements OnInit {
   }
 
   delPatientDiag(): void {
-    this.dialog.open(DelConfirmDialogComponent, { data: { name: this.patient_name, id: this.opt2id[this.patient_name] } })
+    let diag = this.dialog.open(DelConfirmDialogComponent, { data: { name: this.patient_name, id: this.opt2id[this.patient_name] } })
+    diag.afterClosed().subscribe(result => { if (result) { this.update_opts(), this.ngOnInit() } })
   }
 
   updatePatientDiag(): void {
