@@ -1,6 +1,10 @@
-@import "../../styles.scss"; 
-
-.small-item{
+.big-item{
+    display: flex;
+    flex-grow: 3;
+    flex-direction: column;
+  }
+  
+  .small-item{
     display: flex;
     flex-grow: 1;
     flex-basis:auto;
@@ -25,10 +29,6 @@
     width: 90%;
   }
 
-  .half-width{
-    width: 45%;
-  }
-
   .full-height{
     height: 90%;
   }
@@ -36,9 +36,3 @@
   .center-content{
     justify-content: center;
 }
-
-.big-item{
-    display: flex;
-    flex-grow: 3;
-    flex-direction: column;
-  }

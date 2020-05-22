@@ -1,3 +1,5 @@
+import {Cita} from './cita'
+
 export class Paciente {
     id: string;
     name: string;
@@ -18,6 +20,5 @@ export class Paciente {
     enf_otras: string;
     drogas: string;
 
-    cita: boolean;
-    cita_d:string;
+    citas:Cita[]=[];
 }

@@ -3,30 +3,121 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-
-.big-item{
+.container{
   display: flex;
-  flex-grow: 4;
+}
+
+.aps-dets-cont{
+  display: flex;
+  height: 100%;
+  flex-grow: 1 1;
   flex-direction: column;
 }
 
-.small-item{
+.full-container{
+    display: flex;
+    height: 90%;
+}
+
+.main-patient-container{
+  display: flex;
+  width : 70%;
+  height: 100%;
+  flex-grow: 1 1;
+  flex-direction: column;
+}
+
+.buttons{
+  display: flex;
+  width : 20%;
+  flex-grow: 1;
+  flex-direction: column;
+}
+
+.cols{
+  flex-direction: column;
+}
+
+.search-bar{
+  width: 60%;
+  margin:5px;
+}
+
+.patient-card{
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.patient-details{
   display: flex;
   flex-grow: 1;
-  flex-basis:auto;
+  padding: 0;
+}
+
+.patient-temps{
+  width: 20%;
+  flex-grow: 1;
+}
+
+.patient-texts{
+  display: flex;
+  width: 70%;
+  flex-grow: 1;
+  padding: 0;
   flex-direction: column;
 }
 
-.gen-button{
+.temps-list{
   display: flex;
-  margin: 5px;
+  flex-direction: column;;
+  padding: 0;
 }
 
+.big-text{
+  height: 33%;
+}
+
+.patient-title{
+  align-items: flex-end;
+}
+
+.hist-button{
+  display: flex;
+  height: 40px;
+}
+
+.head-pat-form{
+  display: flex;
+  padding: 0;
+}
+
+.head-form-el{
+  width: 33%;
+  flex-grow: 1;
+  margin-left: 5px;
+}
+
+
+
+
+
+
 .flex-spacer {
+  display: flex;
     flex: 1 1 auto;
   }
 
-.form-container{
-    display: flex;
-    height: 90%;
+
+.full-width{
+  width: 90%;
+}
+
+
+.full-height{
+  height: 90%;
+}
+
+.center-content{
+  justify-content: center;
 }

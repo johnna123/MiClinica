@@ -1,4 +1,6 @@
 <mat-toolbar color="primary">
-  <button  mat-button routerLinkActive="active" routerLink="/pacientes">Pacientes</button>
-  <button  mat-button routerLinkActive="active" routerLink="/citas">Citas</button>
+  <button mat-button routerLinkActive="active" routerLink="/pacientes">Pacientes</button>
+  <button mat-button routerLinkActive="active" routerLink="/citas">Citas</button>
+  <div class="flex-spacer"></div>
+  <button mat-raised-button type="button" id="save-btn" (click)="close()">Salir</button>
 </mat-toolbar>

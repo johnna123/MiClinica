@@ -1,1 +1,24 @@
-<p>main-citas works!</p>
+<div class="form-container">
+    <div class="big-item">
+        <p>Proximas Citas:</p>
+        <mat-card class="container" *ngFor="let cita of apointments">
+            <div>
+                <mat-card-title>{{cita["ap_date"] | date}} {{cita["ap_time"]}}</mat-card-title>
+                <mat-card-content>
+                    {{cita.patient}}
+                </mat-card-content>
+            </div>
+            <div class="flex-spacer"></div>
+            <mat-card-actions>
+                <button mat-raised-button (click)="updatApointmenttDiag(cita.ap_id,cita.pid)">Editar Detalles</button>
+                <button mat-raised-button (click)="delApointmentForm(cita.ap_id,cita.pid)">Cancelar Cita</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+
+
+
+    <div class="small-item">
+        <button class="gen-button" mat-raised-button (click)="newApointmentForm()">Agendar Cita</button>
+    </div>
+</div>

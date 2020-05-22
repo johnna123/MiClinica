@@ -16,7 +16,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import {MatListModule} from '@angular/material/list';
+import { MatListModule } from '@angular/material/list';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -29,6 +29,12 @@ import { NewPatientFormComponent } from './new-patient-form/new-patient-form.com
 
 import { FileSystemService } from './services/file-system.service';
 import { DelConfirmDialogComponent } from './del-confirm-dialog/del-confirm-dialog.component';
+import { NewApointmentFormComponent } from './new-apointment-form/new-apointment-form.component';
+import { PatApsComponent } from './pat-aps/pat-aps.component';
+import { DelApointDialogComponent } from './del-apoint-dialog/del-apoint-dialog.component';
+import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 
 @NgModule({
   declarations: [
@@ -38,7 +44,10 @@ import { DelConfirmDialogComponent } from './del-confirm-dialog/del-confirm-dial
     HeaderComponent,
     AutocompleteFilterExample,
     NewPatientFormComponent,
-    DelConfirmDialogComponent
+    DelConfirmDialogComponent,
+    NewApointmentFormComponent,
+    PatApsComponent,
+    DelApointDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -58,14 +67,18 @@ import { DelConfirmDialogComponent } from './del-confirm-dialog/del-confirm-dial
     MatDatepickerModule,
     MatNativeDateModule,
     MatListModule,
+    FontAwesomeModule,
   ],
   entryComponents: [
     NewPatientFormComponent,
     DelConfirmDialogComponent,
+    NewApointmentFormComponent,
+    PatApsComponent,
   ],
   providers: [
     MatDatepickerModule,
     FileSystemService,
+    {provide: MAT_DATE_LOCALE, useValue: 'es'},
   ],
   bootstrap: [AppComponent]
 })

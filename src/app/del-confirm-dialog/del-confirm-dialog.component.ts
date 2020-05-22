@@ -22,7 +22,7 @@ export class DelConfirmDialogComponent implements OnInit {
 
   confDelete() {
     this.fileservice.del_patient(this.data.id);
-    this.dialogRef.close();
+    this.dialogRef.close(true);
   }
 
 }
