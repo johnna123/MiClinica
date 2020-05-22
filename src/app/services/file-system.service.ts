@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Paciente } from '../shared/paciente';
 import { Cita } from '../shared/cita';
+import { IpcRenderer } from 'electron';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FileSystemService {
-
-  constructor() {
+  private _ipc: IpcRenderer | undefined;
+  constructor(
+  ) {
     if (localStorage.getItem("current_id") === null) {
       localStorage.setItem("current_id", "0");
     };
@@ -17,6 +19,16 @@ export class FileSystemService {
     if (localStorage.getItem("active_aps") === null) {
       localStorage.setItem("active_aps", "[]");
     };
+    //    if (window.require) {
+    //      try {
+    //        this._ipc = window.require('electron').ipcRenderer;
+    //      } catch (e) {
+    //        throw e;
+    //      }
+    //    } else {
+    //      console.warn('Electron\'s IPC was not loaded');
+    //    }
+    this._ipc = window.require('electron').ipcRenderer;
   }
 
   update_cid(): void {
@@ -185,15 +197,19 @@ export class FileSystemService {
     return pat.name;
   }
 
-  get_full_data(): any {
+  custom_close(): void {
     var values = {},
       keys = Object.keys(localStorage),
       i = keys.length;
 
     while (i--) {
-      values[keys[i]]=localStorage.getItem(keys[i])
+      values[keys[i]] = localStorage.getItem(keys[i])
     }
-    return values
+    if (!this._ipc) {
+      return;
+    }
+    this._ipc.send("custom_close", JSON.stringify(values));
+
   }
 
 }
