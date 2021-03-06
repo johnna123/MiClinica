@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MainCitasComponent } from './main-citas.component';
 
@@ -6,7 +6,7 @@ describe('MainCitasComponent', () => {
   let component: MainCitasComponent;
   let fixture: ComponentFixture<MainCitasComponent>;
 
-  beforeEach(waitForAsync(() => {
+  beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ MainCitasComponent ]
     })

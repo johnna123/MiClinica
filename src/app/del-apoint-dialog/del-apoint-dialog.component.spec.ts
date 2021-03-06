@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DelApointDialogComponent } from './del-apoint-dialog.component';
 
@@ -6,7 +6,7 @@ describe('DelApointDialogComponent', () => {
   let component: DelApointDialogComponent;
   let fixture: ComponentFixture<DelApointDialogComponent>;
 
-  beforeEach(waitForAsync(() => {
+  beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ DelApointDialogComponent ]
     })
